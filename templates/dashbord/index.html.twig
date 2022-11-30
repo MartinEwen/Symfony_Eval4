@@ -1,0 +1,210 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashbord{% endblock %}
+
+{% block body %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>    
+<script>
+
+    $(document).ready(function(){
+        $("#show1").click(function(){
+            $("#contact, #product").hide();
+            $("#category").show();
+        });
+
+        $("#show2").click(function(){
+            $("#contact, #category").hide();
+            $("#product").show();
+            });
+
+        $("#show3").click(function(){
+            $("#category, #product").hide();
+            $("#contact").show();
+        });
+        
+    })
+
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="sticky-top d-flex flex-column">
+                <button class"btn" id="show1">Category</button>
+                <button class"btn" id="show2">Product</button>
+                <button class"btn" id="show3">Contact</button>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div id="category">
+                <b><h1 class="p-3 mb-2 bg-dark text-white text-center">Category</h1></b>
+
+                    <table class="table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th class="bg-light">Id</th>
+
+                                <th class="bg-light">NameCategory</th>
+
+                                <th class="bg-light">actions</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                        {% for category in categories %}
+
+                            <tr>
+
+                                <td class="bg-light">{{ category.id }}</td>
+
+                                <td class="bg-light">{{ category.nameCategory }}</td>
+
+                                <td class="bg-light">
+                                    <a href="{{ path('category_show', {'id': category.id}) }}">show</a>
+                                    <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
+                                </td class="bg-light">
+
+                            </tr>
+
+                        {% else %}
+
+                            <tr>
+                                <td colspan="3">no records found</td>
+                            </tr>
+
+                        {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                    <a href="{{ path('category_new') }}" class="text-white fs-2">Create new Category</a>
+            </div>
+            <br>
+            <div id="product">
+                <h1 class="p-3 mb-2 bg-dark text-white text-center">Index Product</h1>
+                    
+
+                    <table class="table">
+
+                        <thead>
+
+                            <tr>
+                                <th class="bg-light">Name Product</th>
+                                <th class="bg-light">Image Product</th>
+                                <th class="bg-light">Description Product</th>
+                                <th class="bg-light">Price Product</th>
+                                <th class="bg-light">Category</th>
+                                <th class="bg-light">actions</th>
+                            </tr>
+
+                        </thead>
+                        
+                        <tbody>
+                        
+                        {% for product in products %}
+                        
+                            <tr>
+
+                                <td class="bg-light">
+                                    {{ product.nameProduct }}
+                                </td>
+
+                                <td class="bg-light">
+                                    <img src="{{ asset('uploads/images/' ~ product.imgProduct) }}" width="100" height="100">
+                                </td>
+                                
+                                <td class="bg-light">
+                                    {{ product.descriptionProduct }}
+                                </td>
+
+                                <td class="bg-light">
+                                    {{ product.priceProduct }} €
+                                </td>
+
+                                <td class="bg-light">
+                                    {{ product.category.nameCategory }}
+                                </td>
+
+                                <td class="bg-light">
+                                    <a href="{{ path('product_show', {'id': product.id}) }}">show</a>
+                                    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
+                                </td>
+
+                            </tr>
+                            
+                        {% else %}
+
+                            <tr>
+                                <td colspan="6">no records found</td>
+                            </tr>
+
+                        {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                    <a href="{{ path('product_new') }}" class="text-white fs-2">Create new Product</a>
+
+            </div>
+            <br>
+            <div id="contact">
+
+                <h1 class="p-3 mb-2 bg-dark text-white text-center">Contact</h1>
+
+                <table class="table">
+
+                    <thead>
+
+                        <tr class="bg-light">
+                            <th>Name Contact</th>
+                            <th>Mail Contact</th>
+                            <th>Text Contact</th>
+                            <th>actions</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    {% for contact in contacts %}
+
+                        <tr class="bg-light">
+
+                            <td class="bg-light">{{ contact.nameContact }}</td>
+
+                            <td class="bg-light">{{ contact.mailContact }}</td>
+
+                            <td class="bg-light">{{ contact.textContact }}</td>
+
+                            <td class="bg-light">
+                                <a href="{{ path('contact_show', {'id': contact.id}) }}" class="text-white fs-2">show</a>
+                            </td>
+
+                        </tr>
+
+                    {% else %}
+
+                        <tr  class="bg-light">
+                            <td colspan="5">no records found</td>
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

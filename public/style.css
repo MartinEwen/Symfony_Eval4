@@ -1,0 +1,133 @@
+body {
+    background-image: url("uploads/body.jpg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+}
+
+header {
+    background-image: url("uploads/header.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center top;
+    background-size: cover;
+    max-height: 1500px;
+    height: 100vh;
+    min-height: 700px;
+    color: white;
+    text-shadow: 3px 3px black;
+}
+
+.title-header {
+    font-size: 100px;
+}
+
+.p-header {
+    font-size: 50px;
+}
+
+.title-header,
+.p-header {
+    text-align: center;
+    position: relative;
+}
+
+.card {
+    width: 350px;
+    margin: 15px auto;
+    background-color: white;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.85);
+    height: 650px;
+    border-radius: 10px;
+    background-color: rgb(205, 191, 88);
+}
+
+.card2 {
+    width: auto;
+    min-width: 150px;
+    margin: 15px auto;
+    background-color: white;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.85);
+    height: auto;
+    border-radius: 10px;
+    padding: 5px 0 10px 10px;
+    background-color: rgb(205, 191, 88);
+}
+
+.card:hover .card-image img {
+    width: 160%;
+}
+
+.card-image {
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.card-image img {
+    width: 150%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition-property: filter width;
+    transition-duration: .3s;
+    transition-timing-function: ease;
+}
+
+.card-body {
+    text-align: center;
+    padding: 15px 20px;
+    box-sizing: border-box;
+}
+
+.card-nameProduct,
+.card-category {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.card-price,
+.card-excerpt {
+    font-family: 'Playfair Display', serif;
+}
+
+.card-nameProduct,
+.card-price {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.card-category {
+    font-weight: bold;
+    text-align: center;
+    color: rgb(24, 20, 20);
+}
+
+.card-nameProduct,
+.card-excerpt {
+    color: rgb(24, 20, 20);
+    ;
+}
+
+.card-excerpt::first-letter,
+.card-category::first-letter {
+    text-transform: uppercase;
+}
+
+.icone {
+    font-size: 50px;
+}
+
+.listefooter {
+    font-size: 20px;
+    margin: 20px;
+}
+
+.wonder{
+    font-size: 25px;
+    margin: 25px;
+}
+

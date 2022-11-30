@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WonderCash{% endblock %}
+
+{% block body %}
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('input[type="checkbox"]').click(function() {
+            var inputValue = $(this).attr("value");
+            $("." + inputValue).toggle();
+        });
+    });
+    </script>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-2">
+
+                <div class="sticky-top card2">
+
+                    <h2>Category</h2>
+                    
+                    <label for="all"><input type="checkbox" name="checkbox" value="all" checked><b> All </b></label>
+
+                    <br>
+
+                    {% for category in categories %}
+
+                    <label>
+                        <input type="checkbox" name="checkbox" value="{{ category.nameCategory }}"> <strong>{{ category.nameCategory }} </strong> 
+                    </label>
+
+                    <br>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+            <div class="col-md-10">
+
+                <div class="row">
+
+                    {% for product in products %}
+
+                    <div class="col-xxl-4 col-md-12 col-lg-6 {{ product.category.nameCategory }} all" >
+
+                        <div class="card">
+                        
+                            <div class="card-image">
+                                <img src="{{ asset('uploads/images/' ~ product.imgProduct) }}"  />
+                            </div>
+                            
+                            <div class="card-body">
+
+                                <div class="card-nameProduct">
+                                    <strong><h3>{{ product.nameProduct }}</h3></strong>
+                                </div>
+
+                                <div class="card-category">
+                                    <p>category : {{ product.category.nameCategory }}</p>
+                                </div>
+
+                                <div class="card-price">
+                                    <h4>{{ product.priceProduct }} €</h4>
+                                </div>
+
+                                <div class="card-excerpt">
+                                    <p>{{ product.descriptionProduct }}</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    {% else %}
+                        
+                            <td colspan="6">no records found</td>
+                    
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
