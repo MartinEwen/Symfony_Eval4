@@ -8,6 +8,11 @@
 <script>
 
     $(document).ready(function(){
+       window.onload = function(){  
+            $("#contact, #product").hide();
+            $("#category").show();
+        }  
+        
         $("#show1").click(function(){
             $("#contact, #product").hide();
             $("#category").show();
